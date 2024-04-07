@@ -1,0 +1,112 @@
+✅ variables4 pass
+✅ intro2 pass
+✅ if1 pass
+✅ primitive_types6 pass
+✅ variables5 pass
+✅ variables1 pass
+✅ if2 pass
+✅ vecs1 pass
+✅ variables2 pass
+✅ variables6 pass
+✅ variables3 pass
+✅ functions1 pass
+✅ if3 pass
+✅ vecs2 pass
+✅ functions2 pass
+✅ move_semantics1 pass
+✅ quiz1 pass
+✅ hashmaps2 pass
+✅ move_semantics2 pass
+✅ primitive_types1 pass
+✅ functions3 pass
+✅ hashmaps3 pass
+✅ primitive_types2 pass
+✅ move_semantics3 pass
+✅ functions4 pass
+✅ primitive_types3 pass
+✅ move_semantics4 pass
+✅ quiz2 pass
+✅ functions5 pass
+✅ move_semantics5 pass
+✅ primitive_types4 pass
+✅ options1 pass
+✅ traits4 pass
+✅ move_semantics6 pass
+✅ primitive_types5 pass
+✅ traits5 pass
+✅ options2 pass
+✅ structs1 pass
+✅ iterators4 pass
+✅ options3 pass
+✅ quiz3 pass
+✅ structs2 pass
+✅ lifetimes1 pass
+✅ errors1 pass
+✅ iterators5 pass
+✅ structs3 pass
+✅ lifetimes2 pass
+✅ errors2 pass
+✅ box1 pass
+✅ enums1 pass
+✅ lifetimes3 pass
+✅ errors3 pass
+✅ rc1 pass
+✅ enums2 pass
+✅ tests1 pass
+✅ errors4 pass
+✅ arc1 pass
+✅ enums3 pass
+✅ tests2 pass
+✅ errors5 pass
+✅ strings1 pass
+✅ cow1 pass
+✅ tests3 pass
+✅ strings2 pass
+✅ errors6 pass
+✅ tests4 pass
+✅ generics1 pass
+✅ strings3 pass
+✅ threads1 pass
+✅ iterators1 pass
+✅ generics2 pass
+✅ strings4 pass
+✅ iterators2 pass
+✅ modules1 pass
+✅ traits1 pass
+✅ threads2 pass
+✅ modules2 pass
+✅ iterators3 pass
+✅ traits2 pass
+✅ modules3 pass
+✅ macros2 pass
+✅ traits3 pass
+✅ macros3 pass
+✅ hashmaps1 pass
+✅ macros4 pass
+✅ from_into pass
+✅ tests6 pass
+✅ from_str pass
+✅ tests7 pass
+✅ try_from_into pass
+✅ as_ref_mut pass
+✅ tests8 pass
+✅ tests5 pass
+✅ tests9 pass
+❌ algorithm4 points 0/1
+❌ algorithm5 points 0/1
+❌ algorithm6 points 0/1
+❌ algorithm1 points 0/1
+❌ algorithm7 points 0/1
+❌ algorithm2 points 0/1
+✅ clippy1 pass
+❌ algorithm8 points 0/1
+❌ algorithm3 points 0/1
+❌ algorithm9 points 0/1
+❌ algorithm10 points 0/1
+✅ clippy2 pass
+✅ macros1 pass
+✅ using_as pass
+✅ clippy3 pass
+✅ threads3 pass
+
+Points: 100/110
