@@ -2,7 +2,6 @@
     dfs
     This problem requires you to implement a basic DFS traversal
 */
-#![feature(let_chains)]
 
 use std::collections::{HashSet, VecDeque};
 
@@ -110,40 +109,4 @@ mod tests {
         let visit_order_disconnected = graph.dfs(3);
         assert_eq!(visit_order_disconnected, vec![3, 4]);
     }
-
-    // #[test]
-    // fn test_dfs_simple() {
-    //     let mut graph = Graph::new(3);
-    //     graph.add_edge(0, 1);
-    //     graph.add_edge(1, 2);
-    //
-    //     let visit_order = graph.dfs(0);
-    //     assert_eq!(visit_order, vec![0, 1, 2]);
-    // }
-    //
-    // #[test]
-    // fn test_dfs_with_cycle() {
-    //     let mut graph = Graph::new(4);
-    //     graph.add_edge(0, 1);
-    //     graph.add_edge(0, 2);
-    //     graph.add_edge(1, 2);
-    //     graph.add_edge(2, 3);
-    //     graph.add_edge(3, 3);
-    //
-    //     let visit_order = graph.dfs(0);
-    //     assert_eq!(visit_order, vec![0, 1, 2, 3]);
-    // }
-    //
-    // #[test]
-    // fn test_dfs_disconnected_graph() {
-    //     let mut graph = Graph::new(5);
-    //     graph.add_edge(0, 1);
-    //     graph.add_edge(0, 2);
-    //     graph.add_edge(3, 4);
-    //
-    //     let visit_order = graph.dfs(0);
-    //     assert_eq!(visit_order, vec![0, 1, 2]);
-    //     let visit_order_disconnected = graph.dfs(3);
-    //     assert_eq!(visit_order_disconnected, vec![3, 4]);
-    // }
 }

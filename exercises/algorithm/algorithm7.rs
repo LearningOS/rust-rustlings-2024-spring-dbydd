@@ -114,7 +114,6 @@ fn bracket_match(bracket: &str) -> bool {
 
     let mut stack = Stack::new();
     for c in bracket.chars() {
-        println!("{:?},match: {}", stack, &c);
         // if brackets.values().any(|f| f.cmp(&c).is_eq()) {
         //     stack.push(c);
         // } else {
@@ -138,13 +137,10 @@ fn bracket_match(bracket: &str) -> bool {
                     .pop()
                     .is_some_and(|left| left == *brackets.get(&right).unwrap())
                 {
-                    print!("...popped and not pair!");
                     return false;
                 }
             }
-            _ => {
-                print!("...skip");
-            }
+            _ => {}
         }
     }
     stack.is_empty()
