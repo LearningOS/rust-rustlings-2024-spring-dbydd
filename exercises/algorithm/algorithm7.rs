@@ -116,11 +116,11 @@ fn bracket_match(bracket: &str) -> bool {
     for c in bracket.chars() {
         match Some(c) {
             Some(left) if brackets.values().any(|k| *k == left) => stack.push(left),
-            Some(right) if brackets.keys().any(|k| *k == right) => {
+            Some(right) if brackets.contains_key(&right) => {
                 if stack.is_empty()
-                    || !stack
-                        .pop()
-                        .is_some_and(|left| &left == brackets.get(&right).unwrap())
+                    || !stack.pop().is_some_and(|left| {
+                        left.to_owned() == brackets.get(&right).unwrap().to_owned()
+                    })
                 {
                     return false;
                 }
