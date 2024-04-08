@@ -98,30 +98,30 @@ impl<'a, T> Iterator for IterMut<'a, T> {
 }
 
 fn bracket_match(bracket: &str) -> bool {
-    let brackets: HashMap<char, char> = {
-        let mut hash_set = HashMap::new();
-        for ele in [('(', ')'), ('{', '}'), ('[', ']')] {
-            hash_set.insert(ele.1, ele.0);
-        }
-        hash_set
-    };
-
     let mut stack = Stack::new();
-    for c in bracket.chars() {
-        match Some(c) {
-            Some(left) if brackets.values().any(|k| *k == left) => stack.push(left),
-            Some(right) if brackets.contains_key(&right) => {
-                if stack.is_empty()
-                    || !stack.pop().is_some_and(|left| {
-                        left.to_owned() == brackets.get(&right).unwrap().to_owned()
-                    })
-                {
+
+    for ch in bracket.chars() {
+        match ch {
+            '(' | '[' | '{' => stack.push(ch),
+            ')' => {
+                if stack.is_empty() || stack.pop() != Some('(') {
+                    return false;
+                }
+            }
+            ']' => {
+                if stack.is_empty() || stack.pop() != Some('[') {
+                    return false;
+                }
+            }
+            '}' => {
+                if stack.is_empty() || stack.pop() != Some('{') {
                     return false;
                 }
             }
             _ => {}
         }
     }
+
     stack.is_empty()
 }
 
