@@ -115,24 +115,39 @@ fn bracket_match(bracket: &str) -> bool {
     let mut stack = Stack::new();
     for c in bracket.chars() {
         println!("{:?},match: {}", stack, &c);
-        if brackets.values().any(|f| f.cmp(&c).is_eq()) {
-            stack.push(c);
-        } else {
-            let cal = brackets.get(&c);
-            if let Some(lp) = cal {
-                if !stack.is_empty() {
-                    let poped_lp = &stack.pop().unwrap();
-
-                    if poped_lp != lp {
-                        return false;
-                    }
-                } else {
+        // if brackets.values().any(|f| f.cmp(&c).is_eq()) {
+        //     stack.push(c);
+        // } else {
+        //     let cal = brackets.get(&c);
+        //     if let Some(lp) = cal {
+        //         if !stack.is_empty() {
+        //             let poped_lp = &stack.pop().unwrap();
+        //
+        //             if poped_lp != lp {
+        //                 return false;
+        //             }
+        //         } else {
+        //             return false;
+        //         }
+        //     }
+        // }
+        match Some(c) {
+            Some(left) if brackets.values().any(|k| *k == left) => stack.push(left),
+            Some(right) if brackets.keys().any(|k| *k == right) => {
+                if !stack
+                    .pop()
+                    .is_some_and(|left| left == *brackets.get(&right).unwrap())
+                {
+                    print!("...popped and not pair!");
                     return false;
                 }
             }
+            _ => {
+                print!("...skip");
+            }
         }
     }
-    stack.size == 0
+    stack.is_empty()
 }
 
 #[cfg(test)]
