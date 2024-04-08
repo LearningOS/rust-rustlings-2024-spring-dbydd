@@ -9,7 +9,6 @@ use std::{
     intrinsics::breakpoint,
 };
 
-// I AM NOT DONE
 #[derive(Debug)]
 struct Stack<T> {
     size: usize,
@@ -115,22 +114,25 @@ fn bracket_match(bracket: &str) -> bool {
 
     let mut stack = Stack::new();
     for c in bracket.chars() {
-        if brackets.values().any(|f| f == &c) {
+        println!("{:?},match: {}", stack, &c);
+        if brackets.values().any(|f| f.cmp(&c).is_eq()) {
             stack.push(c);
         } else {
-            if (brackets.contains_key(&c)) {
-                if (brackets
-                    .get(&c)
-                    .is_some_and(|r| stack.peek().is_some_and(|l| *l == *r)))
-                {
-                    return false;
+            let cal = brackets.get(&c);
+            if let Some(lp) = cal {
+                if !stack.is_empty() {
+                    let poped_lp = &stack.pop().unwrap();
+
+                    if poped_lp != lp {
+                        return false;
+                    }
                 } else {
-                    stack.pop();
+                    return false;
                 }
             }
         }
     }
-    return stack.size == 0;
+    stack.size == 0
 }
 
 #[cfg(test)]
