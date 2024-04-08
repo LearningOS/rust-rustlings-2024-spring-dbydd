@@ -5,7 +5,7 @@
 // I AM NOT DONE
 
 use std::fmt::{self, Display, Formatter};
-use std::ptr::NonNull;
+use std::ptr::{swap, NonNull};
 use std::vec::*;
 
 #[derive(Debug)]
@@ -59,21 +59,32 @@ impl<T> LinkedList<T> {
         self.length += 1;
     }
 
-    pub fn get(&mut self, index: i32) -> Option<&T> {
+    pub fn get(&mut self, index: i32) -> Option<&mut T> {
         self.get_ith_node(self.start, index)
     }
 
-    fn get_ith_node(&mut self, node: Option<NonNull<Node<T>>>, index: i32) -> Option<&T> {
+    fn get_ith_node(&mut self, node: Option<NonNull<Node<T>>>, index: i32) -> Option<&mut T> {
         match node {
             None => None,
             Some(next_ptr) => match index {
-                0 => Some(unsafe { &(*next_ptr.as_ptr()).val }),
+                0 => Some(unsafe { &mut (*next_ptr.as_ptr()).val }),
                 _ => self.get_ith_node(unsafe { (*next_ptr.as_ptr()).next }, index - 1),
             },
         }
     }
+
+
 	pub fn reverse(&mut self){
-		// TODO
+        let mut l:i32 = 0;
+        let mut r:i32 = (self.length-1) as i32;
+        while r-l>0 {
+let ln = (self.get_ith_node(self.start,l)).unwrap();
+let rn = (self.get_ith_node(self.start,r)).unwrap();
+        std::mem::swap(ln,rn);
+        l+=1;
+        r-=1;
+        }
+
 	}
 }
 

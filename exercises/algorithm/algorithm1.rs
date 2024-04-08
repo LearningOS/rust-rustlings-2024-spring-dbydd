@@ -2,7 +2,6 @@
     single linked list merge
     This problem requires you to merge two ordered singly linked lists into one ordered singly linked list
 */
-// I AM NOT DONE
 
 use std::borrow::{Borrow, BorrowMut};
 use std::f32::consts::E;
@@ -24,7 +23,7 @@ impl<T> Node<T> {
 #[derive(Debug)]
 struct LinkedList<T>
 where
-    T: PartialOrd,
+    T: PartialOrd+Clone,
 {
     length: u32,
     start: Option<NonNull<Node<T>>>,
@@ -33,7 +32,7 @@ where
 
 impl<T> Default for LinkedList<T>
 where
-    T: PartialOrd,
+    T: PartialOrd+Clone,
 {
     fn default() -> Self {
         Self::new()
@@ -42,7 +41,7 @@ where
 
 impl<T> LinkedList<T>
 where
-    T: PartialOrd,
+    T: PartialOrd+Clone,
 {
     pub fn new() -> Self {
         Self {
@@ -84,20 +83,27 @@ where
             end: None,
         };
 
-        let (ind_a, ind_b) = (0, 0);
+        let mut ind_a = 0;
+        let mut ind_b = 0;
         while ind_a < list_a.length || ind_b < list_b.length {
-            match (list_a.get(ind_a), list_b.get(ind_b)) {
+            match (list_a.get(ind_a as i32), list_b.get(ind_b as i32)) {
                 (None, None) => {
                     return linked_list;
                 }
-                (None, Some(_)) => todo!(),
-                (Some(_), None) => todo!(),
+                (None, Some(node)) => {
+                    linked_list.add(node.clone());
+                    ind_b += 1;
+                },
+                (Some(node), None) => {
+                        linked_list.add(node.clone());
+                        ind_a += 1;
+                },
                 (Some(nda), Some(ndb)) => {
                     if nda <= ndb {
-                        linked_list.add(nda.to_owned());
+                        linked_list.add(nda.clone());
                         ind_a += 1;
                     } else {
-                        linked_list.add(ndb.to_owned());
+                        linked_list.add(ndb.clone());
                         ind_b += 1;
                     }
                 }
@@ -109,7 +115,7 @@ where
 
 impl<T> Display for LinkedList<T>
 where
-    T: Display + PartialOrd,
+    T: Display + PartialOrd+Clone,
 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         match self.start {
@@ -121,7 +127,7 @@ where
 
 impl<T> Display for Node<T>
 where
-    T: Display + PartialOrd,
+    T: Display + PartialOrd+Clone,
 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         match self.next {
