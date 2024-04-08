@@ -119,7 +119,7 @@ fn bracket_match(bracket: &str) -> bool {
             Some(right) if brackets.keys().any(|k| *k == right) => {
                 if !stack
                     .pop()
-                    .is_some_and(|left| left == *brackets.get(&right).unwrap())
+                    .is_some_and(|left| &left == brackets.get(&right).unwrap())
                 {
                     return false;
                 }
