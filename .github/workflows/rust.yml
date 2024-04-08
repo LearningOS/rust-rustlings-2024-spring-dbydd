@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run tests
-      run: cargo test --test cicv --verbose
+      run: cargo test --test cicv --verbose && echo ${{ steps.autograding.outputs.details }}
     - uses: yfblock/os-autograding@master
       id: autograding
       with:
