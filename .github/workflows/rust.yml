@@ -30,6 +30,8 @@ jobs:
       id: autograding
       with:
         outputFile: .github/result/check_result.json
+    - name: dump log
+      run: cat .github/result/check_result.json
   deploy:
     name: Deploy to pages
     needs: build
